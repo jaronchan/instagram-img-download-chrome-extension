@@ -1,6 +1,7 @@
 // Update the relevant fields with the new data.
 
 var photoIds = [];
+var profileName;
 var wrapper;
 const setDOMInfo = (info) => {
   info.photos.forEach((element) => {
@@ -31,6 +32,7 @@ const setDOMInfo = (info) => {
 };
 
 const setBaseInfo = (info) => {
+  profileName = info.profile;
   document.getElementById("title").textContent = info.profile + "'s profile";
   document.getElementById("total").textContent = info.total;
 };
@@ -81,8 +83,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function download(data) {
   const a = document.createElement("a");
+
   a.href = "data:application/zip;base64," + data;
-  a.setAttribute("download", "imgs.zip");
+  a.setAttribute("download", profileName + "-photos.zip");
   a.style.display = "none";
   a.addEventListener("click", (e) => e.stopPropagation()); // not relevant for modern browsers
   document.body.appendChild(a);
