@@ -1,4 +1,7 @@
 // Update the relevant fields with the new data.
+window.onload = function () {
+  document.getElementById("loading").style.display = "none";
+};
 
 var photoIds = [];
 var profileName;
@@ -94,9 +97,12 @@ function download(data) {
     a.click();
     document.body.removeChild(a);
   }, 0);
+  document.getElementById("loading").style.display = "none";
 }
 
 function download_all() {
+  document.getElementById("loading").style.display = "block";
+
   var zip = new JSZip();
   [...document.getElementsByClassName("dl")].forEach((img, i) =>
     zip.file("img" + i + ".jpg", img.src.replace(/data:.*?;base64,/, ""), {

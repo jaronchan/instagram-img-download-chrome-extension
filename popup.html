@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body style="height: 600px; width: 600px">
+    <div id="loading">
+      <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+    </div>
     <h3 id="title" style="font-weight: bold; text-align: center">N/A</h3>
     <table border="1" cellpadding="3" style="border-collapse: collapse">
       <tr>
@@ -23,10 +26,14 @@
         <td align="right"><span id="total">N/A</span></td>
       </tr>
       <tr>
-        <td nowrap>Number of photos elements:</td>
+        <td nowrap>Number of photos captured:</td>
         <td align="right"><span id="photos">N/A</span></td>
       </tr>
     </table>
+    <form id="capture-form">
+      <label for="capture-count">Enter how many to save:</label>
+      <input type="text" id="capture-count" name="capture-count" />
+    </form>
     <button id="capture" type="button">Capture</button>
     <button id="dl_all" type="button">Download Pictures</button>
     <div class="wrapper" id="photo-grid"></div>
