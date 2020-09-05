@@ -23,4 +23,8 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     // Enable the page-action for the requesting tab.
     console.log("content script initialised");
   }
+  if (msg.from === "content" && msg.subject === "scroll") {
+    // Enable the page-action for the requesting tab.
+    console.log("scrolling");
+  }
 });
