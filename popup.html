@@ -2,9 +2,11 @@
 <html style="height: 600px; width: 600px">
   <head>
     <script
-      type="text/javascript"
-      src="Stuk-jszip-25d401e/dist/jszip.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"
+      integrity="sha512-y3o0Z5TJF1UsKjs/jS2CDkeHN538bWsftxO9nctODL5W40nyXIbs0Pgyu7//icrQY9m6475gLaVr39i/uh/nLA=="
+      crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
     <script type="text/javascript" src="popup.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -24,7 +26,7 @@
         <td align="right"><span id="profile">N/A</span></td>
       </tr>
     </table>
-    <button type="button">Download Pictures</button>
+    <button id="dl_all" type="button">Download Pictures</button>
     <div class="wrapper" id="photo-grid"></div>
   </body>
 </html>
