@@ -32,6 +32,7 @@ const setDOMInfo = (info) => {
     }
   });
   document.getElementById("photos").textContent = photoIds.length;
+  document.getElementById("loading").style.display = "none";
 };
 
 const setBaseInfo = (info) => {
@@ -62,6 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   document.getElementById("capture").addEventListener("click", () => {
+    document.getElementById("loading").style.display = "block";
     // ...query for the active tab...
     chrome.tabs.query(
       {
@@ -79,6 +81,22 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       }
     );
+    // chrome.tabs.query(
+    //   {
+    //     active: true,
+    //     currentWindow: true,
+    //   },
+    //   (tabs) => {
+    //     // ...and send a request for the DOM info...
+    //     chrome.tabs.sendMessage(
+    //       tabs[0].id,
+    //       { from: "popup", subject: "scrollDown" },
+    //       // ...also specifying a callback to be called
+    //       //    from the receiving end (content script).
+    //       null
+    //     );
+    //   }
+    // );
   });
 
   document.getElementById("dl_all").addEventListener("click", download_all);

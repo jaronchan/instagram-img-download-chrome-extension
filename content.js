@@ -9,26 +9,29 @@ chrome.runtime.sendMessage({
 chrome.runtime.onMessage.addListener((msg, sender, response) => {
   // First, validate the message's structure.
   if (msg.from === "popup" && msg.subject === "capture") {
+    window.scrollTo(0, document.body.scrollHeight);
     // Collect the necessary data.
     // (For your specific requirements `document.querySelectorAll(...)`
     //  should be equivalent to jquery's `$(...)`.)
+    setTimeout(() => {
+      var photoSquares = document.querySelectorAll(".v1Nh3.kIKUG._bz0w");
+      var photoLinks = [];
 
-    var photoSquares = document.querySelectorAll(".v1Nh3.kIKUG._bz0w");
-    var photoLinks = [];
+      photoSquares.forEach((element) =>
+        photoLinks.push(element.querySelector("a").href)
+      );
 
-    photoSquares.forEach((element) =>
-      photoLinks.push(element.querySelector("a").href)
-    );
-
-    var domInfo = {
-      total: document.querySelector(".g47SY").textContent,
-      photos: photoLinks,
-      profile: /.com\/([^']*)\//.exec(location.href)[1],
-    };
+      var domInfo = {
+        total: document.querySelector(".g47SY").textContent,
+        photos: photoLinks,
+        profile: /.com\/([^']*)\//.exec(location.href)[1],
+      };
+      response(domInfo);
+    }, 3000);
+    return true;
 
     // Directly respond to the sender (popup),
     // through the specified callback.
-    response(domInfo);
   }
   if (msg.from === "popup" && msg.subject === "baseInfo") {
     var baseInfo = {
@@ -39,5 +42,17 @@ chrome.runtime.onMessage.addListener((msg, sender, response) => {
     // Directly respond to the sender (popup),
     // through the specified callback.
     response(baseInfo);
+  }
+
+  if (msg.from === "popup" && msg.subject === "scrollDown") {
+    window.scrollTo(0, document.body.scrollHeight);
+    // var baseInfo = {
+    //   total: document.querySelector(".g47SY").textContent,
+    //   profile: /.com\/([^']*)\//.exec(location.href)[1],
+    // };
+
+    // Directly respond to the sender (popup),
+    // through the specified callback.
+    response(null);
   }
 });
