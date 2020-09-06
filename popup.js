@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   document.getElementById("capture").addEventListener("click", () => {
-    console.log(document.getElementById("capture-count").value);
+    // console.log(document.getElementById("capture-count").value);
     document.getElementById("loading").style.display = "block";
     // ...query for the active tab...
     chrome.tabs.query(
