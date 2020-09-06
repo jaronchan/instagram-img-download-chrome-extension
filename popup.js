@@ -63,6 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   document.getElementById("capture").addEventListener("click", () => {
+    console.log(document.getElementById("capture-count").value);
     document.getElementById("loading").style.display = "block";
     // ...query for the active tab...
     chrome.tabs.query(
@@ -106,7 +107,7 @@ function download(data) {
   const a = document.createElement("a");
 
   a.href = "data:application/zip;base64," + data;
-  a.setAttribute("download", profileName + "-photos.zip");
+  a.setAttribute("download", profileName + "-instagram.zip");
   a.style.display = "none";
   a.addEventListener("click", (e) => e.stopPropagation()); // not relevant for modern browsers
   document.body.appendChild(a);
